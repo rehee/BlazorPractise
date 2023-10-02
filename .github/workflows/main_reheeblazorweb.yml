@@ -23,13 +23,13 @@ jobs:
           include-prerelease: true
     
       - name: dotnet publish
-        run: dotnet publish -c Release -o BlazorPractise/DemoApi/DemoApi.csproj
+        run: dotnet publish -c Release BlazorPractise/DemoApi/DemoApi.csproj -o BlazorPractise/app
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: .net-app
-          path: BlazorPractise/DemoApi
+          path: BlazorPractise/app
 
   deploy:
     runs-on: ubuntu-latest
