@@ -4,10 +4,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-
+builder.Services.AddServerSideBlazor();
 var app = builder.Build();
 #if !DEBUG
-      if(builder.WebHost is ConfigureWebHostBuilder hb)
+if(builder.WebHost is ConfigureWebHostBuilder hb)
 {
   hb.UseUrls("http://+:80");
 } 
@@ -28,5 +28,6 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
-
+app.MapBlazorHub();
+app.MapFallbackToPage("/_Host");
 app.Run();
